@@ -41,7 +41,7 @@ export class AddComment extends React.Component {
                     <input className="form-control" onChange={(e) => this.setState({email: e.target.value})} value={email}/>
                 </div>
                 <div className="form-group">
-                    <label>Tavs epasts</label>
+                    <label>Tavs komentars</label>
                     <textarea className="form-control" onChange={(e) => this.setState({comment: e.target.value})} value={comment}/>
                 </div>
                 {errors.map((error,i) =>
