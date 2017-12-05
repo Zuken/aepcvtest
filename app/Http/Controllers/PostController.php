@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
 use App\Post;
 
 class PostController extends Controller
@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate( config('blog.per_page') );
 
         return view('post.index', compact('posts'));
     }
@@ -32,19 +32,12 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'text' => 'required',
-        ]);
-        $post = new Post;
-        $post->title = $request->title;
-        $post->text = $request->text;
-        $post->save();
+        $post = Post::create($request->all());
         return redirect()->action('PostController@show', $post);
     }
 
@@ -60,33 +53,6 @@ class PostController extends Controller
         return view('post.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
-        return view('post.edit', compact('post'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $post = Post::findOrFail($id);
-        $post->title = $request->title;
-        $post->text = $request->text;
-        $post->save();
-        return redirect()->action('PostController@show', $post);
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -96,6 +62,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->comments()->delete();
+        $post->delete();
+        return redirect()->back();
     }
 }

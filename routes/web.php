@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DashboardController');
 
 Route::resource('post', 'PostController');
 Route::resource('post.comment', 'CommentController');

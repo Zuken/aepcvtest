@@ -1,9 +1,72 @@
 
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.bg-white {
+  background: #fff;
+  padding: 1.5rem;
+}
+.db-indicator {
+
+  width: 100%;
+  background: #00c5de;
+  position: relative;
+  overflow: hidden;
+  height: 125px;
+  border: 2px solid #0ad0ea;
+  border-radius: 2px;
+  display: inline-block;
+  &.red {
+    background: #de430c;
+    border: 2px solid #de5008;
+    .db-indicator__icon i {
+      color: #bb3808;
+    }
+  }
+  &.green {
+    background: #00de5c;
+    border: 2px solid #00d85b;
+    .db-indicator__icon i {
+      color: #02ca18;
+    }
+  }
+  &.orange {
+    background: #de8400;
+    border: 2px solid #ce7800;
+    .db-indicator__icon i {
+      color: #ce7800;
+    }
+  }
+  .db-indicator__icon {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    transform: rotateZ(-7deg);
+    i {
+      color: #0e9eb1;
+      font-size:4em;
+    }
+  }
+  .db-indicator__value {
+    font-size: 2em;
+    margin: 0.4rem 3rem 0;
+    color: white;
+    font-weight: 600;
+  }
+  .db-indicator__caption {
+    font-size: 1.5em;
+    margin: 1em 2rem 0 2rem;
+    color: white;
+    font-weight: 100;
+    position: absolute;
+    bottom: 0.3em;
+    line-height: 1;
+  }
+}

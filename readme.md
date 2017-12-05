@@ -49,11 +49,15 @@ Hints:
 * model files `/app/Post.php`
 * [Laravel Validation](https://laravel.com/docs/5.3/validation)
 
+
+Comment: Moved validation in Request classes
+
 ## Task 2: Unique Post Titles
 
 When creating new post in `localhost:8000/post/create`, check if post with such title already exists and prevent
 creating a duplicate.
 
+Comment: Done in Request class `StorePostRequest`
 ## Task 3: Editing Posts
 
 When opening a post, there is functionality to edit it (`localhost:8000/post/1/edit`). Please make sure that the
@@ -61,6 +65,7 @@ same validation created in Task 1 and 2 is also used when editing.
 
 Hints:
 * file: `/resources/views/post/edit.blade.php`
+Comment: Update logic moved in `Api\PostController` validates by `UpdatePostRequest`
 
 ## Task 4: Create Possibility to Delete Posts
 
@@ -76,12 +81,16 @@ Under each post, a list of comments is displayed (`localhost:8000/post/1`). Add 
 button next to each comment. The button should delete all comments from
 database with the same email.
 
+Comment: Datetime format stored in config/blog
+
 ## Task 7: Links and Navigation
 
 _This task evaluates familiarity with HTML and UX_
 
 In all pages, add link to start page, and a page title. Optionally create some
 navigation.
+
+Comment: Added pagination and navigation
 
 ## Task 8: Style
 
@@ -92,6 +101,8 @@ Google Material, etc) is permitted.
 
 For extra points, you can also use the built in gulpfile and node to build CSS
 from SCSS.
+
+Comment: used elixir to build bootstrap sass files and custom sass styles
 
 ## Task 9: Advanced Block Commenters Functionality
 
@@ -125,6 +136,7 @@ Examples include (but are not limited to), showing a "edit post" popup with JSON
 posting in the `/post/1` window instead of separate view `/post/1/edit`
 
 You can also do something with jQuery, but that will not be counted as full point.
+Comment: converted Post show page, added edit functionality(activated by icon or double click)
 
 ## Task 11: Statistics Dashboard
 
@@ -132,6 +144,8 @@ _This task evaluates understanding of project and creative thinking_
 
 Create a new "dashboard" page with various statistics about posts and comments. The
 statistics can be picked freely from your own ideas on what else might be needed.
+
+Comment: added 4 icons with custom sass style with different stats
 
 ## Task 12:
 
